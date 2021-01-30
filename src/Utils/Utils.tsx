@@ -4,7 +4,6 @@ const useOutsideEvent = (ref: any, setHover: Function) => {
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (ref.current && !ref.current.contains(event.target)) {
-        console.log('inside', event.target);
         setHover();
       }
     };

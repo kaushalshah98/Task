@@ -26,9 +26,7 @@ const Login: FC<any> = memo((props: any) => {
   const password = localStorage.getItem('password');
 
   const onSubmit = (data: any) => {
-    console.log(data, 'email ', Email, 'password: ', password);
     if (data.email === Email && data.password === password) {
-      console.log('true ');
       setIsAuth(true);
       history.push('/dashboard');
     } else {

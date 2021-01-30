@@ -1,53 +1,44 @@
 import * as React from 'react';
-import CustomTable from '../DynamicTable/shared_table_CustomTable';
+import CustomTable from '../../Shared/DynamicTable/shared_table_CustomTable';
 import * as FeatherIcon from 'react-feather';
 
 const tableHeaders: any[] = [
   { key: 'number', value: 'SR NO. ' },
-  { key: 'name', value: 'Name' },
-  { key: 'email', value: 'Email' },
-  { key: 'age', value: 'Age' },
-  { key: 'gender', value: 'Gender' },
+  { key: 'name', value: 'Name', sort: true },
+  { key: 'email', value: 'Email', sort: true },
+  { key: 'age', value: 'Age', sort: true },
+  { key: 'gender', value: 'Gender', sort: true },
   { key: '', value: 'Action', component: 'Action' }
 ];
 
 const Action = (props: any) => {
-  const { patientList } = props;
-  console.log('props actions', patientList);
-
-  const deletePatient = () => {};
+  const { data, deletePatient } = props;
+  const deletee = () => {
+    deletePatient(data.name);
+  };
   return (
     <td className="px-6 py-4 whitespace-no-wrap border-b font-medium border-gray-200 text-sm leading-5 text-gray-700">
-      <div className="flex">
-        <button onClick={() => deletePatient()} />
-        <FeatherIcon.Trash2 data-tip data-for="view" size="16" className="mr-3" />
-
-        <button onClick={() => deletePatient()} />
-        <FeatherIcon.Download data-tip data-for="view" size="16" className="mr-3" />
+      <div className="flex items-center ml-5">
+        <button onClick={deletee}>
+          <FeatherIcon.Trash2 data-tip data-for="view" size="20" className="mr-3 text-red-700" />
+        </button>
       </div>
     </td>
   );
 };
-
-const PatientTable = (props: any) => {
-  const {
-    modal,
-    setModal,
-    patientList,
-    setPatientList,
-    register,
-    handleSubmit,
-    errors,
-    filterPatient
-  } = props;
-  console.log('data', patientList);
+type Props = {
+  patientList: any;
+  deletePatient: any;
+  filter: any;
+};
+const PatientTable = (props: Props) => {
+  const { patientList, deletePatient, filter } = props;
 
   const CustomTableProps = {
     headers: tableHeaders,
-    data: filterPatient,
-    components: { Action },
-    patientList,
-    setPatientList
+    data: patientList,
+    functions: { deletePatient, filter },
+    components: { Action }
     /*  pagination: { limit, numbersToshow, activeClass, totalPages, totalRecords, page },
           functions: { changePage },
           loading: loader */
@@ -59,7 +50,6 @@ const PatientTable = (props: any) => {
   return (
     <div className="flex flex-col m-2 py-8">
       <div className="-my-2 py-2  ">
-        {/*sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8  */}
         <div className="align-middle w-full inline-block min-w-full shadow sm:rounded-lg  border border-gray-200">
           <CustomTable {...CustomTableProps} />
         </div>

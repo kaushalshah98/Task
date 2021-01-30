@@ -1,21 +1,24 @@
 import React from 'react';
 import { Search, Edit, Trash } from 'react-feather';
-import { Modal } from '../Modal/modal';
+import { Modal } from '../../Shared/Modal/modal';
 
+const validations = {
+  name: { required: 'Enter Name' },
+  email: {
+    required: 'Enter your e-mail',
+    pattern: {
+      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+      message: 'Enter a valid e-mail address'
+    }
+  },
+  age: { required: 'Enter Age' },
+  gender: { required: 'Enter Gender' }
+};
 const AddPatient = (props: any) => {
-  const { modal, setModal, patientList, setPatientList, register, handleSubmit, errors } = props;
+  const { addPatient, setModal, register, handleSubmit, errors } = props;
 
   const onSubmit = (list: any) => {
-    const listArray: any = [
-      ...patientList,
-      {
-        name: list.name,
-        email: list.email,
-        age: list.age,
-        gender: list.gender
-      }
-    ];
-    setPatientList(listArray);
+    addPatient(list);
     setModal(false);
   };
   return (
@@ -84,6 +87,7 @@ const AddPatient = (props: any) => {
                   <div className="mb-4">
                     <input
                       name="age"
+                      type="number"
                       ref={register({ required: 'Enter Last Name' })}
                       placeholder="Enter Patient Age"
                       //  onChange={(e) => oncustomerSearch(e.target.value)}

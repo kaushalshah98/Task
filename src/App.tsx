@@ -1,24 +1,16 @@
-import React from 'react';
-import './css/fonts.css';
 import '@tailwindcss/ui/dist/tailwind-ui.css';
-import 'react-pro-sidebar/dist/css/styles.css';
-import './css/style.css';
-import Store from './Store/MobxStore';
-import { Login } from './components/Auth/Login';
+import React, { useState } from 'react';
 import ReactNotification from 'react-notifications-component';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { Provider } from 'mobx-react';
+import 'react-pro-sidebar/dist/css/styles.css';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
+import Authentication from './components/Auth/Authentication';
+import { Login } from './components/Auth/Login';
 import Registration from './components/Auth/Registration';
 import Dashboard from './components/Dashboard/Dashboard';
-import Authentication from './components/Auth/Authentication';
-import Controller from './components/Controller/Controller';
-import { useState } from 'react';
+import './css/fonts.css';
+import './css/style.css';
 
 const App = (props: any) => {
-  localStorage.setItem('Email', 'kaushalshah589@gmail.com');
-  localStorage.setItem('Password', 'Kaushal@1234');
-  //const {isAuth, setIsAuth} = Controller(props);
-  //const authProps = {isAuth, setIsAuth}
   let [isAuth, setIsAuth] = useState(false);
 
   return (
@@ -34,7 +26,7 @@ const App = (props: any) => {
         <Route exact path="/registration">
           <Registration />
         </Route>
-        <Authentication path="/dashboard" component={Dashboard} isAuth={isAuth} />
+        <Authentication path="/dashboard" component={Dashboard} isAuth={true} />
       </Router>
     </>
   );
