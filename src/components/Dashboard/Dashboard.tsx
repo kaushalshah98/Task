@@ -1,10 +1,10 @@
-import React from "react";
-import * as FeatherIcon from "react-feather";
-import AddPatient from "./addPatient";
-import PatientTable from "./patientTable";
-import Controller from "../Controller/Controller";
-import DashboardHeader from "./dashboardHeader";
-import {withRouter} from 'react-router-dom'
+import React from 'react';
+import * as FeatherIcon from 'react-feather';
+import AddPatient from './addPatient';
+import PatientTable from './patientTable';
+import Controller from '../Controller/Controller';
+import DashboardHeader from './dashboardHeader';
+import { withRouter } from 'react-router-dom';
 
 const Dashboard = (props: any) => {
   const {
@@ -18,7 +18,7 @@ const Dashboard = (props: any) => {
     setError,
     clearErrors,
     handleInput,
-    filterPatient,
+    filterPatient
   } = Controller(props);
 
   const addPatientProps = {
@@ -28,7 +28,7 @@ const Dashboard = (props: any) => {
     setPatientList,
     register,
     handleSubmit,
-    errors,
+    errors
   };
   const patientTableProps = {
     modal,
@@ -38,10 +38,10 @@ const Dashboard = (props: any) => {
     register,
     handleSubmit,
     errors,
-    filterPatient,
+    filterPatient
   };
 
-  const dashboardHeadersProps = { setModal,handleInput }; 
+  const dashboardHeadersProps = { setModal, handleInput };
 
   return (
     <>

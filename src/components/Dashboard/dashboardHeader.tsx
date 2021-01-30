@@ -1,8 +1,8 @@
-import React from "react";
-import * as FeatherIcon from "react-feather";
+import React from 'react';
+import * as FeatherIcon from 'react-feather';
 
 const DashboardHeader = (props: any) => {
-  const { setModal,handleInput } = props;
+  const { setModal, handleInput } = props;
 
   return (
     <div className="relative bg-blue-500">
@@ -13,19 +13,14 @@ const DashboardHeader = (props: any) => {
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <div className="flex mr-2 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
               <input
-                autoComplete={"off"}
+                autoComplete={'off'}
                 name="firstName"
                 onChange={handleInput}
                 placeholder="Search Patient Name"
                 className="flex-1 form-input block w-full min-w-0 rounded-r-none rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"
               />
-              <button className='pl-2 bg-white rounded-md rounded-l-none transition duration-150 ease-in-out sm:text-sm sm:leading-5'>
-                <FeatherIcon.Search
-                  data-tip
-                  data-for="view"
-                  size="16"
-                  className="mr-3"
-                />
+              <button className="pl-2 bg-white rounded-md rounded-l-none transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                <FeatherIcon.Search data-tip data-for="view" size="16" className="mr-3" />
               </button>
             </div>
             <button

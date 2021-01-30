@@ -11,29 +11,29 @@ const inactiveIconClassName =
 const activeIconClassName =
   'relative left-2 -mt-1 text-blue-600 cursor-pointer hover:text-blue-700';
 
-  export const getData = (key: string, row: any) => {
-    const count = key.split('.').length - 1;
-    if (count === 4) {
-      const [key1, key2, key3, key4, key5] = key.split('.');
-      return row[key1][key2][key3][key4] === null || row[key1][key2][key3][key4] === undefined
-        ? '-'
-        : row[key1][key2][key3][key4][key5];
-    } else if (count === 3) {
-      const [key1, key2, key3, key4] = key.split('.');
-      return row[key1][key2][key3] === null || row[key1][key2][key3] === undefined
-        ? '-'
-        : row[key1][key2][key3][key4];
-    } else if (count === 2) {
-      const [key1, key2, key3] = key.split('.');
-      return row[key1][key2] === null || row[key1][key2] === undefined ? '-' : row[key1][key2][key3];
-    } else if (count === 1) {
-      const [key1, key2] = key.split('.');
-      return row[key1] === null || row[key1] === undefined ? '-' : row[key1][key2];
-    } else {
-      return row[key] === null || row[key] === undefined ? '-' : row[key];
-    }
-  };
-  
+export const getData = (key: string, row: any) => {
+  const count = key.split('.').length - 1;
+  if (count === 4) {
+    const [key1, key2, key3, key4, key5] = key.split('.');
+    return row[key1][key2][key3][key4] === null || row[key1][key2][key3][key4] === undefined
+      ? '-'
+      : row[key1][key2][key3][key4][key5];
+  } else if (count === 3) {
+    const [key1, key2, key3, key4] = key.split('.');
+    return row[key1][key2][key3] === null || row[key1][key2][key3] === undefined
+      ? '-'
+      : row[key1][key2][key3][key4];
+  } else if (count === 2) {
+    const [key1, key2, key3] = key.split('.');
+    return row[key1][key2] === null || row[key1][key2] === undefined ? '-' : row[key1][key2][key3];
+  } else if (count === 1) {
+    const [key1, key2] = key.split('.');
+    return row[key1] === null || row[key1] === undefined ? '-' : row[key1][key2];
+  } else {
+    return row[key] === null || row[key] === undefined ? '-' : row[key];
+  }
+};
+
 type LabelProps = { keyy: string | string[]; row: any; seperator?: string };
 type SequenceNumberProps = { page?: number; limit?: number; index: number };
 type DynamicComponentProps = {
@@ -124,7 +124,7 @@ const SortIcon: FC<SortIconProps> = (props) => {
 const Header: FC<any> = (props) => {
   return props.headers.map(
     (
-      { value, key, sort = false, sorted = false, upperCase = false, thClassName }:any,
+      { value, key, sort = false, sorted = false, upperCase = false, thClassName }: any,
       index: number
     ) => {
       const SortIconProp = { keyy: key, sorted, filter: props.filter };
@@ -154,5 +154,5 @@ export {
   WrappedLabel as Label,
   WrappedLoading as Loading,
   WrappedNoDataFound as NoDataFound,
-  WrappedDynamicComponent as DynamicComponent,
+  WrappedDynamicComponent as DynamicComponent
 };

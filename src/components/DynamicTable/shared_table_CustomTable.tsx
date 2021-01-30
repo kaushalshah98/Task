@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 //import { Pagination } from '../pagination/Pagination';
 import { paginationType } from './CustomTableHelper';
 import { DynamicComponent, Header, Label, NoDataFound, SequenceNumber } from './CustomTableHelper';
-import {Loading} from './CustomTableHelper'
+import { Loading } from './CustomTableHelper';
 type IDataTableProps = {
   headers: any;
   data?: any;
@@ -23,8 +23,9 @@ type IDataTableProps = {
 };
 
 const CustomTable: React.FC<IDataTableProps> = (props) => {
-  const { data,headers,  components, pagination, loading, functions, isLoading } = props;
-  const { activeClass, limit, page, totalRecords, totalPages, numbersToshow }:any = pagination || {};
+  const { data, headers, components, pagination, loading, functions, isLoading } = props;
+  const { activeClass, limit, page, totalRecords, totalPages, numbersToshow }: any =
+    pagination || {};
   const { changePage, filter } = functions || {};
   const PagiProps = {
     totalPages,
@@ -35,7 +36,7 @@ const CustomTable: React.FC<IDataTableProps> = (props) => {
     changePage,
     page
   };
-    
+
   return (
     <div className="flex flex-col bg-gray">
       <div className=" -my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -50,7 +51,10 @@ const CustomTable: React.FC<IDataTableProps> = (props) => {
             {loading || isLoading || !data ? (
               <tbody>
                 <tr>
-                  <td className="px-1/2 bg-white justify-center divide-y divide-gray-200" colSpan={headers?.length}>
+                  <td
+                    className="px-1/2 bg-white justify-center divide-y divide-gray-200"
+                    colSpan={headers?.length}
+                  >
                     <Loading />
                   </td>
                 </tr>
@@ -67,8 +71,11 @@ const CustomTable: React.FC<IDataTableProps> = (props) => {
               <tbody className="bg-white">
                 {data?.map((row: any, index: any) => {
                   return (
-                    <tr className="hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100" key={index}>
-                      {headers.map((head:any, number:any) => {
+                    <tr
+                      className="hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-100"
+                      key={index}
+                    >
+                      {headers.map((head: any, number: any) => {
                         if (head.key === 'number') {
                           const SequenceNumberProps = { page, limit, index };
                           return <SequenceNumber key={number} {...SequenceNumberProps} />;
@@ -92,7 +99,10 @@ const CustomTable: React.FC<IDataTableProps> = (props) => {
               </tbody>
             )}
           </table>
-          {pagination && {/* <Pagination {...PagiProps} /> */}}
+          {pagination &&
+            {
+              /* <Pagination {...PagiProps} /> */
+            }}
         </div>
       </div>
     </div>

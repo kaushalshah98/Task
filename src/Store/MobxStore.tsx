@@ -1,17 +1,9 @@
-import React, { useState } from "react";
-import { observable, action, decorate, computed } from "mobx"
-import { observer } from "mobx-react";
+import React, { useState } from 'react';
+import { observable, action, decorate, computed } from 'mobx';
+import { observer } from 'mobx-react';
 
 class ActionStore {
-    
-    constructor(){
-
-    }
+  constructor() {}
 }
 
-
-
-
-export default decorate(ActionStore, {
- 
-});
+export default decorate(ActionStore, {});

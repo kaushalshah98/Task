@@ -1,22 +1,21 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const Registration = () => {
   const [details, setDetails] = useState([]);
   const onSubmit = (data: any) => {
-
-      localStorage.setItem('email', data.email);
-      localStorage.setItem('password', data.password);
-      localStorage.setItem('firstname', data.firstname);
-      localStorage.setItem('lastname', data.lastname);
-      window.location.href = '/login';
-     // window.localStorage.clear()
+    localStorage.setItem('email', data.email);
+    localStorage.setItem('password', data.password);
+    localStorage.setItem('firstname', data.firstname);
+    localStorage.setItem('lastname', data.lastname);
+    window.location.href = '/login';
+    // window.localStorage.clear()
   };
-  
-  const { register, handleSubmit, errors,getValues } = useForm({
-    mode: "onBlur",
-    reValidateMode: "onBlur",
+
+  const { register, handleSubmit, errors, getValues } = useForm({
+    mode: 'onBlur',
+    reValidateMode: 'onBlur'
   });
 
   return (
@@ -39,8 +38,7 @@ const Registration = () => {
             <div className="mt-8">
               <div className="mt-6">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  
-                  <div className='mt-4'>
+                  <div className="mt-4">
                     <label
                       htmlFor="email"
                       className="block text-sm font-medium leading-5 text-gray-700"
@@ -49,7 +47,7 @@ const Registration = () => {
                     </label>
                     <div className="mt-1 rounded-md shadow-sm">
                       <input
-                        autoComplete={"off"}
+                        autoComplete={'off'}
                         name="firstname"
                         type="input"
                         /* value={loginData.email}
@@ -57,18 +55,16 @@ const Registration = () => {
                           setLoginData({ ...loginData, email: e.target.value })
                         } */
                         ref={register({
-                          required: "Enter First Name",
+                          required: 'Enter First Name'
                         })}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                     {errors.firstname && (
-                      <p className="text-red-500 text-sm ml-2">
-                        {errors.firstname.message}
-                      </p>
+                      <p className="text-red-500 text-sm ml-2">{errors.firstname.message}</p>
                     )}
                   </div>
-                  <div className='mt-4'>
+                  <div className="mt-4">
                     <label
                       htmlFor="email"
                       className="block text-sm font-medium leading-5 text-gray-700"
@@ -77,7 +73,7 @@ const Registration = () => {
                     </label>
                     <div className="mt-1 rounded-md shadow-sm">
                       <input
-                        autoComplete={"off"}
+                        autoComplete={'off'}
                         name="lastname"
                         type="input"
                         /* value={loginData.email}
@@ -85,15 +81,13 @@ const Registration = () => {
                           setLoginData({ ...loginData, email: e.target.value })
                         } */
                         ref={register({
-                          required: "Enter Last Name",
+                          required: 'Enter Last Name'
                         })}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                     {errors.lastname && (
-                      <p className="text-red-500 text-sm ml-2">
-                        {errors.lastname.message}
-                      </p>
+                      <p className="text-red-500 text-sm ml-2">{errors.lastname.message}</p>
                     )}
                   </div>
                   <div className="mt-4">
@@ -105,7 +99,7 @@ const Registration = () => {
                     </label>
                     <div className="mt-1 rounded-md shadow-sm">
                       <input
-                        autoComplete={"off"}
+                        autoComplete={'off'}
                         name="email"
                         type="email"
                         /* value={loginData.email}
@@ -113,19 +107,17 @@ const Registration = () => {
                           setLoginData({ ...loginData, email: e.target.value })
                         } */
                         ref={register({
-                          required: "Enter your e-mail",
+                          required: 'Enter your e-mail',
                           pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                            message: "Enter a valid e-mail address",
-                          },
+                            message: 'Enter a valid e-mail address'
+                          }
                         })}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                     {errors.email && (
-                      <p className="text-red-500 text-sm ml-2">
-                        {errors.email.message}
-                      </p>
+                      <p className="text-red-500 text-sm ml-2">{errors.email.message}</p>
                     )}
                   </div>
                   <div className="mt-4">
@@ -137,7 +129,7 @@ const Registration = () => {
                     </label>
                     <div className="mt-1 rounded-md shadow-sm">
                       <input
-                        autoComplete={"off"}
+                        autoComplete={'off'}
                         name="password"
                         type="password"
                         /*  value={loginData.password}
@@ -148,23 +140,21 @@ const Registration = () => {
                           })
                         } */
                         ref={register({
-                          required: "You must specify a password",
+                          required: 'You must specify a password',
                           minLength: {
                             value: 8,
-                            message: "Password must have at least 8 characters",
-                          },
+                            message: 'Password must have at least 8 characters'
+                          }
                         })}
                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                       />
                     </div>
                     {errors.password && (
-                      <p className="text-red-500 text-sm justify-end ">
-                        {errors.password.message}
-                      </p>
+                      <p className="text-red-500 text-sm justify-end ">{errors.password.message}</p>
                     )}
                   </div>
-                               
-                {/*   <Link to='/login'> */}
+
+                  {/*   <Link to='/login'> */}
                   <div className="mt-6">
                     <span className="block w-full rounded-md shadow-sm">
                       <button
@@ -175,7 +165,7 @@ const Registration = () => {
                       </button>
                     </span>
                   </div>
-                 {/*  </Link> */}
+                  {/*  </Link> */}
                 </form>
               </div>
             </div>
